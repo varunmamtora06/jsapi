@@ -58,7 +58,7 @@ def post_blog():
             return Response(status=201)
 
         except:
-            return Response(status=401)
+            return Response(status=404)
 
 @api.route('/updateblog/<int:id>', methods=['GET', 'POST'])
 def update_blog(id):
@@ -79,7 +79,7 @@ def update_blog(id):
         return Response(status=201)
 
     except:
-        return Response(status=401)
+        return Response(status=404)
 
 @api.route('/deleteblog/<int:id>')
 def delete(id):
@@ -93,7 +93,7 @@ def delete(id):
     try:
         db.session.delete(blog)
         db.session.commit()
-        return Response(status=201)
+        return Response(status=200)
 
     except:
-        return Response(status=401)
+        return Response(status=404)
